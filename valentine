@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Valentine Interactive ♥️</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffe6ea;
+      text-align: center;
+      margin-top: 50px;
+    }
+    #question {
+      font-size: 28px;
+      color: #ff3366;
+      margin-bottom: 30px;
+    }
+    .choiceBtn {
+      font-size: 20px;
+      padding: 12px 25px;
+      margin: 10px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+    }
+    #description {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #ff4d6d;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Сайн уу? Гүнж ээ! 😇</h1>
+
+<div id="question">Сайн уу?</div>
+
+<div id="choices">
+  <button class="choiceBtn" onclick="nextStep('сайн')">Сайн 😇</button>
+  <button class="choiceBtn" onclick="nextStep('муу')">Муу 😤</button>
+</div>
+
+<div id="description"></div>
+
+<script>
+let step = 0;
+
+function nextStep(choice) {
+  const q = document.getElementById("question");
+  const c = document.getElementById("choices");
+  const d = document.getElementById("description");
+
+  if(step === 0){
+    step++;
+    q.innerText = "Тэгвэл чи надтай хамт асуултанд хариулах уу?";
+    c.innerHTML = `<button class="choiceBtn" onclick="nextStep('тэгье')">Тэгье ✨</button>
+                   <button class="choiceBtn" onclick="nextStep('үгүй')">Үгүй 🫣</button>`;
+    d.innerText = "";
+    return;
+  }
+
+  if(step === 1){
+    step++;
+    if(choice === "тэгье"){
+      q.innerText = "Бэлэн үү?";
+      c.innerHTML = `<button class="choiceBtn" onclick="nextStep('бэлэн')">Бэлэн</button>
+                     <button class="choiceBtn" onclick="nextStep('үгүй')">Үгүй</button>`;
+      d.innerText = "";
+    } else {
+      q.innerText = "Өө, ойлголоо 😏 Дараа оролдоно шүү!";
+      c.innerHTML = <button class="choiceBtn" onclick="nextStep('тэгье')">Тэгье ✨</button>;
+      d.innerText = "";
+    }
+    return;
+  }
+
+  if(step === 2){
+    step++;
+    if(choice === "бэлэн"){
+      q.innerText = "Яг бэлэн юм уу?";
+      c.innerHTML = `<button class="choiceBtn" onclick="nextStep('тиймээ')">Тиимээ!</button>
+                     <button class="choiceBtn" onclick="nextStep('үгүү')">Үгүү!</button>`;
+      d.innerText = "";
+    } else {
+      q.innerText = "Бэлэн биш бол жаахан бэлдээрэй 😊";
+      c.innerHTML = <button class="choiceBtn" onclick="nextStep('бэлэн')">Бэлэн</button>;
+      d.innerText = "";
+    }
+    return;
+  }
+
+  if(step === 3){
+    step++;
+    q.innerText = "Чи Энхтөгөлдөр хүүгийн Валентин болооч 😓🙏";
+    c.innerHTML = `<button class="choiceBtn" onclick="nextStep('тиим')">Тийм ❤️</button>
+                   <button class="choiceBtn" onclick="nextStep('үгүй')">Үгүй 😢</button>`;
+    d.innerText = "Хэрэв болвол гүнжээ баярлуулна гэсэн шүү! 🤫";
+    return;
+  }
+
+  if(step === 4){
+    step++;
+    if(choice === "тиим"){
+      q.innerText = "Чамд маш их баярлалаа! 😊";
+      c.innerHTML = <button class="choiceBtn" onclick="nextStep('дуусга')">За 💖</button>;
+      d.innerText = "Энэ сайхан хариултаа бамбруушдаа хэлээрэй! 😘";
+    } else {
+      q.innerText = "Өө, яахав дээ 😔";
+      c.innerHTML = <button class="choiceBtn" onclick="nextStep('дуусга')">За 💖</button>;
+      d.innerText = "";
+    }
+    return;
+  }
+
+  if(step >= 5 || choice === "дуусга"){
+    q.innerText = "Хайртай шүү! 😘🥰♥️";
+    c.innerHTML = "";
+    d.innerText = "";
+  }
+}
+</script>
+
+</body>
+</html>
